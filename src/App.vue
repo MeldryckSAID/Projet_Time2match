@@ -1,14 +1,13 @@
 <template>
-
-  
-  
-
   <RouterView />
 </template>
 
 <script>
-
 export default {
-  components: { },
+  components: {},
 };
 </script>
+
+<style>
+@import "./assets/styles.css";
+</style>

@@ -8,7 +8,7 @@
       </div>
 
       <div class="flex flex-col">
-        <h1 class="text-center text-8xl">Time<span class="text-Orangee">2</span>Match</h1>
+        <h1 class="text-center font-quicksand font-semibold text-8xl">Time<span class="text-Orangee">2</span>Match</h1>
 
         <div class="section_barre mt-14 flex justify-center">
           <div class="search-box">
@@ -19,7 +19,9 @@
           </div>
         </div>
 
-        <chevron class="mt-14 flex justify-center" />
+        <div class="flex justify-center">
+          <chevron class="mt-14" />
+        </div>
       </div>
 
       <div class="flex justify-end">
@@ -27,8 +29,8 @@
       </div>
 
       <div class="box2">
-        <h3>Time2Match, c’est quoi ?</h3>
-        <p>
+        <h3 class="font-quicksand text-3xl font-medium p-5">Time2Match, c’est quoi ?</h3>
+        <p class=" font-quicksand text-lg font-normal p-2">
           L’objectif est simple, pouvoir retrouver ses <br />
           amis pour jouer dans des terrains de <br />
           sport libre accès.

@@ -1,6 +1,11 @@
 <template>
+<header>
+  <MenuView></MenuView>
+</header>
+<main>
+<div class=" bg-Noirr text-Blancc ">
   <div>
-    <h2>les sports sur time2match</h2>
+    <h2 class="text-center font-quicksand font-semibold text-8xl p-8">Les sports sur time2match</h2>
     <p>Non, vous ne trouverez pas le kayak.</p>
   </div>
 
@@ -37,12 +42,15 @@
   </div>
 
   <p>Vous ne trouvez pas votre sport favori ? Proposez-le nous ! Nous contacter</p>
+  </div>
+  </main>
 </template>
 
 <script>
 import IconFootball from "../components/icones-sports.vue/icon-football.vue";
 import IconBasketball from "../components/icones-sports.vue/icon-basketball.vue";
 import IconVolleyball from "../components/icones-sports.vue/icon-volleyball.vue";
+import MenuView from "../components/MenuView.vue";
 
 export default {
   name: "SportsView",
@@ -50,7 +58,8 @@ export default {
     IconFootball,
     IconBasketball,
     IconVolleyball,
-  },
+    MenuView
+},
   data() {
     return {};
   },

@@ -4,29 +4,24 @@
   </header>
   <div class="bg-Noirr">
     <div>
-   
-        <barre_blanche />
-      
+      <div class="grid grid-cols-4">
+        <div class="z-10 col-start-1 col-end-2">
+          <barre_blanche />
+        </div>
 
-      <div class="flex flex-col">
-        <h1 class="text-center font-quicksand text-8xl font-semibold">Time<span class="text-Orangee">2</span>Match</h1>
+        <div class="col-start-2 col-end-4 row-start-2 row-end-3 flex flex-col">
+          <h1 class="text-center font-quicksand text-8xl font-semibold">Time<span class="text-Orangee">2</span>Match</h1>
 
-        <div class="section_barre mt-14 flex justify-center">
-          <div class="search-box">
-            <input type="text" name="" class="search-txt" placeholder="Rechercher une adresse, un village, une ville..." />
-            <a class="search-btn" href="#">
-              <img class="lope" src="/public/icn/loupe.svg" alt="schearch" />
-            </a>
+          <Schearch_barre></Schearch_barre>
+
+          <div class="flex justify-center">
+            <chevron class="mt-14" />
           </div>
         </div>
 
-        <div class="flex justify-center">
-          <chevron class="mt-14" />
+        <div class="z-10 col-start-4 col-end-4 row-start-3 flex justify-end">
+          <barre_orange />
         </div>
-      </div>
-
-      <div class="flex justify-end">
-        <barre_orange />
       </div>
 
       <div class="box2">
@@ -55,7 +50,7 @@
             Si tu préfères mettre des smashes <br />
             à tes adversaires, 84 espaces de volleyball <br />
             sont la pour toi ! <br />
-             <RouterLink class="block py-2 px-4" to="/terrains">
+            <RouterLink class="block py-2 px-4" to="/terrains">
               <span class="text-Orangee">Tu peux les consulter ici. </span>
             </RouterLink>
           </p>
@@ -67,7 +62,7 @@
           <p class="p_logo3">
             Si ton truc c’est de mettre des paniers, <br />
             198 espaces de basketball n’attendent que toi ! <br />
-             <RouterLink class="block py-2 px-4" to="/terrains">
+            <RouterLink class="block py-2 px-4" to="/terrains">
               <span class="text-Orangee">Tu peux les consulter ici. </span>
             </RouterLink>
           </p>
@@ -98,11 +93,12 @@ import user from "../components/user/user.vue";
 import chevron from "../components/barre/chevron.vue";
 import logo_patte from "../components/barre/logo_patte.vue";
 import MenuView from "../components/MenuView.vue";
+import Schearch_barre from "../components/Schearch_barre.vue";
 
 import FooterView from "../components/FooterView.vue";
 
 export default {
-  components: { barre_blanche, barre_orange, user, chevron, logo_patte, MenuView, FooterView },
+  components: { barre_blanche, barre_orange, user, chevron, logo_patte, MenuView, FooterView, Schearch_barre },
 
   data() {
     return {};

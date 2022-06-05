@@ -9,6 +9,10 @@
     <cardMeldryck class="mt-20" />
   </div>
 </main>
+
+<footer>
+  <FooterView></FooterView>
+</footer>
   
 </template>
 
@@ -17,6 +21,7 @@ import cardIlkay from "../components/card/cardIlkay.vue";
 import cardAxel from "../components/card/cardAxel.vue";
 import cardMeldryck from "../components/card/cardMeldryck.vue";
 import MenuView from "../components/MenuView.vue";
+import FooterView from "../components/FooterView.vue";
 
 export default {
   components: {
@@ -24,6 +29,7 @@ export default {
     cardAxel,
     cardMeldryck,
     MenuView,
+    FooterView,
   },
 };
 </script>

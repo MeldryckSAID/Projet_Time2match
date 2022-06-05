@@ -1,4 +1,7 @@
 <template>
+  <header>
+    <MenuView />
+  </header>
   <div class="bg-Noirr p-10 text-Blancc">
     <h2 class="pt-10 pb-10 text-center text-4xl uppercase">Mentions légales</h2>
     <p class="pb-6 text-center font-semibold">
@@ -241,13 +244,20 @@
       permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents de Paris.
     </p>
   </div>
+
+  <footer>
+    <FooterView></FooterView>
+  </footer>
 </template>
 
 <script>
+import MenuView from "../components/MenuView.vue";
+import FooterView from "../components/FooterView.vue";
+
 export default {
-  name: "MentionsLegalesView",
-  data() {
-    return {};
+  components: {
+    MenuView,
+    FooterView,
   },
 };
 </script>

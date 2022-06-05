@@ -4,11 +4,9 @@
   </header>
   <div class="bg-Noirr">
     <div>
-      <div class="-z-50 flex justify-between">
+   
         <barre_blanche />
-
-        <user class="m-5 mt-7" />
-      </div>
+      
 
       <div class="flex flex-col">
         <h1 class="text-center font-quicksand text-8xl font-semibold">Time<span class="text-Orangee">2</span>Match</h1>
@@ -40,45 +38,57 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-6 border-2 border-red-700">
-        <div class="col-start-1 col-end-3 row-start-1 row-end-3 border-2 border-green-700">
+      <div class="grid grid-cols-6 py-5">
+        <div class="col-start-1 col-end-3 row-start-1 row-end-3">
           <p>
             Si tu veux mettre des buts, <br />
             264 espaces de football libre accès <br />
             sont à ta disposition ! <br />
-            <span class="text-Orangee">Tu peux les consulter ici. </span>
+            <RouterLink class="block py-2 px-4" to="/terrains">
+              <span class="text-Orangee">Tu peux les consulter ici. </span>
+            </RouterLink>
           </p>
         </div>
 
-        <div class="col-start-5 col-end-7 row-start-1 row-end-3 border-2 border-pink-500">
+        <div class="col-start-5 col-end-7 row-start-1 row-end-3">
           <p class="p_logo2">
             Si tu préfères mettre des smashes <br />
             à tes adversaires, 84 espaces de volleyball <br />
             sont la pour toi ! <br />
-            <span class="text-Orangee"> Tu peux les consulter ici.</span>
+             <RouterLink class="block py-2 px-4" to="/terrains">
+              <span class="text-Orangee">Tu peux les consulter ici. </span>
+            </RouterLink>
           </p>
         </div>
 
-        <logo_patte class="z-50 col-start-3 col-end-6 row-start-2 row-end-4 border-2 border-blue-200" />
+        <logo_patte class="z-50 col-start-3 col-end-6 row-start-2 row-end-4" />
 
-        <div class="col-start-1 col-end-3 row-start-4 row-end-6 border-2 border-orange-100">
+        <div class="col-start-1 col-end-3 row-start-4 row-end-6">
           <p class="p_logo3">
             Si ton truc c’est de mettre des paniers, <br />
             198 espaces de basketball n’attendent que toi ! <br />
-            <span class="text-Orangee">Tu peux les consulter ici. </span>
+             <RouterLink class="block py-2 px-4" to="/terrains">
+              <span class="text-Orangee">Tu peux les consulter ici. </span>
+            </RouterLink>
           </p>
         </div>
 
-        <div class="col-start-5 col-end-7 row-start-4 row-end-6 border-2 border-indigo-700">
+        <div class="col-start-5 col-end-7 row-start-4 row-end-6">
           <p class="p_logo4">
             Crée un compte et trouve <br />
             une partie sportive en moins de 5 minutes ! <br />
-            <span class="text-Orangee"> Rejoins nous ici.</span>
+            <RouterLink class="block py-2 px-4" to="/terrains">
+              <span class="text-Orangee">Tu peux les consulter ici. </span>
+            </RouterLink>
           </p>
         </div>
       </div>
     </div>
   </div>
+
+  <footer>
+    <FooterView></FooterView>
+  </footer>
 </template>
 
 <script>
@@ -89,8 +99,10 @@ import chevron from "../components/barre/chevron.vue";
 import logo_patte from "../components/barre/logo_patte.vue";
 import MenuView from "../components/MenuView.vue";
 
+import FooterView from "../components/FooterView.vue";
+
 export default {
-  components: { barre_blanche, barre_orange, user, chevron, logo_patte, MenuView },
+  components: { barre_blanche, barre_orange, user, chevron, logo_patte, MenuView, FooterView },
 
   data() {
     return {};

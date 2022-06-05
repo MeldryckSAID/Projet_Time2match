@@ -7,6 +7,7 @@ import PartenairesView from "../views/PartenairesView.vue";
 import AProposView from "../views/AProposView.vue";
 import MentionLegalesView from "../views/MentionLegalesView.vue";
 import PageCoView from "../views/PageCoView.vue";
+import ContactView from "../views/ContactView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,6 +20,7 @@ const router = createRouter({
     { path: "/Apropos", name: "aProposView", component: AProposView },
     { path: "/mentionlegales", name: "MentionsLegalesView", component: MentionLegalesView },
     { path: "/pageco", name: "PageCoView", component: PageCoView },
+    { path: "/contact", name: "ContactView", component: ContactView },
   ],
 });
 

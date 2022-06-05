@@ -1,4 +1,7 @@
 <template>
+  <header>
+    <MenuView></MenuView>
+  </header>
   <div class="bg-Noirr">
     <div>
       <div class="-z-50 flex justify-between">
@@ -8,7 +11,7 @@
       </div>
 
       <div class="flex flex-col">
-        <h1 class="text-center font-quicksand font-semibold text-8xl">Time<span class="text-Orangee">2</span>Match</h1>
+        <h1 class="text-center font-quicksand text-8xl font-semibold">Time<span class="text-Orangee">2</span>Match</h1>
 
         <div class="section_barre mt-14 flex justify-center">
           <div class="search-box">
@@ -29,8 +32,8 @@
       </div>
 
       <div class="box2">
-        <h3 class="font-quicksand text-3xl font-medium p-5">Time2Match, c’est quoi ?</h3>
-        <p class=" font-quicksand text-lg font-normal p-2">
+        <h3 class="p-5 font-quicksand text-3xl font-medium">Time2Match, c’est quoi ?</h3>
+        <p class="p-2 font-quicksand text-lg font-normal">
           L’objectif est simple, pouvoir retrouver ses <br />
           amis pour jouer dans des terrains de <br />
           sport libre accès.
@@ -84,9 +87,10 @@ import barre_orange from "../components/barre/barre_orange.vue";
 import user from "../components/user/user.vue";
 import chevron from "../components/barre/chevron.vue";
 import logo_patte from "../components/barre/logo_patte.vue";
+import MenuView from "../components/MenuView.vue";
 
 export default {
-  components: { barre_blanche, barre_orange, user, chevron, logo_patte },
+  components: { barre_blanche, barre_orange, user, chevron, logo_patte, MenuView },
 
   data() {
     return {};

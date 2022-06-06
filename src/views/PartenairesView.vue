@@ -75,8 +75,6 @@ export default {
     Barre_droite,
     Barre_gauche,
   },
-  data() {
-    return {};
-  },
+  
 };
 </script>

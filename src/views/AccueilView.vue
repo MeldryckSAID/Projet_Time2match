@@ -93,9 +93,10 @@ import user from "../components/user/user.vue";
 import chevron from "../components/barre/chevron.vue";
 import logo_patte from "../components/barre/logo_patte.vue";
 import MenuView from "../components/MenuView.vue";
-import Schearch_barre from "../components/Schearch_barre.vue";
+
 
 import FooterView from "../components/FooterView.vue";
+import Schearch_barre from "../components/schearch_barre.vue";
 
 export default {
   components: { barre_blanche, barre_orange, user, chevron, logo_patte, MenuView, FooterView, Schearch_barre },

@@ -2,8 +2,19 @@
   <header>
     <MenuView />
   </header>
-  <div class="bg-Noirr p-10 text-Blancc">
+
+  <main  class="bg-Noirr  text-Blancc">
+  <div>
+    
     <h2 class="pt-10 pb-10 text-center text-4xl uppercase">Mentions légales</h2>
+
+<div  class="flex justify-end">
+   <Barre_droite></Barre_droite>
+</div>
+   
+<div class="p-10">
+
+
     <p class="pb-6 text-center font-semibold">
       Mentions légales Propriétaire du site Time2Match (mentions légales) <br />
       Le site internet Time2Match est la propriété de Time2Match Le site est réalisé et édité par Ilkay MEN, Axel TOUCHAIS et Meldryck SAÏD.
@@ -243,7 +254,10 @@
       Tout litige en relation avec l'utilisation du site Time2Match.fr est soumis au droit français. En dehors des cas où la loi ne le
       permet pas, il est fait attribution exclusive de juridiction aux tribunaux compétents de Paris.
     </p>
+    </div>
   </div>
+  </main>
+
 
   <footer>
     <FooterView></FooterView>
@@ -253,11 +267,13 @@
 <script>
 import MenuView from "../components/MenuView.vue";
 import FooterView from "../components/FooterView.vue";
+import Barre_droite from "../components/barre/barre_droite.vue";
 
 export default {
   components: {
     MenuView,
     FooterView,
-  },
+    Barre_droite
+},
 };
 </script>

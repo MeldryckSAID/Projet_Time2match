@@ -3,7 +3,23 @@
   <MenuView/>
 </header>
 <main>
-  <div class="grid place-content-center bg-Noirr p-2">
+  <div class="grid place-content-center bg-Noirr p-2 text-Blancc">
+
+     <div class="flex flex-row">
+      <Barre_gauche></Barre_gauche>
+
+      <div class="justify-center">
+        <div>
+          <h2 class="py-15 p-8 text-center font-quicksand text-8xl font-semibold">
+            L'équipe de <span class="text-Orangee">2</span>match
+          </h2>
+          <p class="py-5">Derrière ce site se cache toute une équipe de passionnés !</p>
+        </div>
+      </div>
+
+      <Barre_droite></Barre_droite>
+    </div>
+    
     <cardIlkay class="" />
     <cardAxel class="mt-20" />
     <cardMeldryck class="mt-20" />

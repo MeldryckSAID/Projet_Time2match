@@ -10,7 +10,18 @@
         <div class="justify-center">
           <div>
             <h2 class="py-15 p-8 text-center font-quicksand text-8xl font-semibold">Time<span class="text-Orangee">2</span>match</h2>
-            <p class="py-5">Non, vous ne trouverez pas le kayak.</p>
+            
+          </div>
+
+          <div class=" rounded-lg bg-Blancc flex justify-around ">
+            <p class="text-Noirr font-quicksand font-bold">Afficher uniquement les parties de...</p>
+            <select class="bg-Noirr  text-Orangee" name="sport" >
+              <option class="hover:bg-Orangee hover:text-Blancc" value="Basketball">Basketball</option>
+              <option value="Football">Football</option>
+              <option value="Voleyball">Voleyball</option>
+             
+            </select>
+
           </div>
 
           <div class="flex justify-center">
@@ -68,8 +79,8 @@
           </div>
           <div class="flex justify-center py-5">
             <div class="m-5 flex w-fit flex-col items-center justify-center rounded-xl border-4 border-Orangee py-3">
-              <p class="font-quicksand text-lg font-light">Vous ne trouvez pas votre sport favori ? Proposez-le nous !</p>
-              <h5 class="font-quicksand text-2xl font-light text-Orangee">Nous contacter</h5>
+              <p class="font-quicksand text-lg font-light">Vous ne trouvez personne avec qui jouer ? Créez une partie !</p>
+              <h5 class="font-quicksand text-2xl font-light text-Orangee">Créer une partie sportive</h5>
             </div>
           </div>
         </div>

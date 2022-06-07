@@ -4,12 +4,77 @@
       <MenuView />
     </header>
     <main class="min-h-screen bg-Noirr text-Blancc">
-      <div class="-z-10 flex justify-end py-5">
-        <Barre_droite></Barre_droite>
-      </div>
-
-      <div class="-z-10 flex justify-start py-10">
+      <div class="flex flex-row">
         <Barre_gauche></Barre_gauche>
+
+        <div class="justify-center">
+          <div>
+            <h2 class="py-15 p-8 text-center font-quicksand text-8xl font-semibold">Time<span class="text-Orangee">2</span>match</h2>
+            <p class="py-5">Non, vous ne trouverez pas le kayak.</p>
+          </div>
+
+          <div class="flex justify-center">
+            <div class="card-body table-responsive col-start-1">
+              <table class="text-light table">
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <span>
+                        <div class="input-group m-8">
+                          <input
+                            type="text"
+                            class="form-control w-full appearance-none rounded-full border-4 bg-Blancc py-2 px-4 text-center leading-tight text-black placeholder:text-black focus:border-Orangee focus:bg-Noirr focus:text-left focus:text-Orangee focus:outline-none focus:placeholder:text-Blancc"
+                            v-model="filter"
+                            placeholder="Chercher votre partie"
+                          />
+
+                          <!-- <button class="btn btn-light" type="button" @click="createPartie()" title="Création">Ajouter</button> -->
+                        </div>
+                      </span>
+                    </th>
+                  </tr>
+                </thead>
+                <div class="flex justify-center">
+                  <tbody class="grid grid-cols-3">
+                    <tr v-for="partie in filterByNom" :key="partie.id">
+                      <td>
+                        <form>
+                          <div class="input-group">
+                            <div class="p-2">
+                              <div class="flex flex-col items-center justify-center border-4 border-red-900">
+                                <img class="center h-48 w-72 rounded-t-lg object-cover" :src="partie.photo" alt="imgalt" />
+
+                                <input
+                                  type="text"
+                                  class="form-control w-full appearance-none bg-transparent py-2 px-4 text-center leading-tight text-Blancc placeholder:text-black focus:outline-none"
+                                  v-model="partie.nom"
+                                  required
+                                />
+                                <button class="m-5" type="submit" @click.prevent="updatePartie(partie)" title="Modification">
+                                  Modifier
+                                </button>
+
+                                <button class="m-5" type="submit" @click.prevent="deletePartie(partie)" title="Suppression">Delete</button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </td>
+                    </tr>
+                  </tbody>
+                </div>
+              </table>
+            </div>
+          </div>
+          <div class="flex justify-center py-5">
+            <div class="m-5 flex w-fit flex-col items-center justify-center rounded-xl border-4 border-Orangee py-3">
+              <p class="font-quicksand text-lg font-light">Vous ne trouvez pas votre sport favori ? Proposez-le nous !</p>
+              <h5 class="font-quicksand text-2xl font-light text-Orangee">Nous contacter</h5>
+            </div>
+          </div>
+        </div>
+
+        <Barre_droite></Barre_droite>
       </div>
     </main>
 
@@ -26,12 +91,144 @@ import FooterView from "../components/FooterView.vue";
 import Barre_droite from "../components/barre/barre_droite.vue";
 import Barre_gauche from "../components/barre/barre_gauche.vue";
 
+import {
+  getStorage, // Obtenir le Cloud Storage
+  ref, // Pour créer une référence à un fichier à uploader
+  getDownloadURL, // Permet de récupérer l'adress complète d'un fichier du Storage
+} from "https://www.gstatic.com/firebasejs/9.7.0/firebase-storage.js";
+
+import {
+  getFirestore,
+  collection,
+  doc,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  onSnapshot,
+} from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
+
 export default {
+  name: "ListeView",
+  data() {
+    return {
+      nom: null,
+      listePartieSynchro: [],
+      filter: "",
+      photo: null,
+    };
+  },
   components: {
     MenuView,
     FooterView,
     Barre_droite,
     Barre_gauche,
+  },
+
+  computed: {
+    //Tri des catégories par ordre alpha
+    orderByNom: function () {
+      return this.listePartieSynchro.sort(function (a, b) {
+        if (a.nom < b.nom) return -1;
+        if (a.nom > b.nom) return 1;
+        return 0;
+      });
+    },
+
+    filterByNom: function () {
+      if (this.filter.length > 0) {
+        let filter = this.filter.toLowerCase();
+        return this.orderByNom.filter(function (partie) {
+          //console.log("partie", partie.partie);
+          return partie.nom.toLowerCase().includes(filter);
+        });
+      } else {
+        return this.orderByNom;
+      }
+    },
+  },
+  mounted() {
+    this.getPartieSynchro();
+  },
+  methods: {
+    async getPartieSynchro() {
+      // Obtenir Firestore
+      const firestore = getFirestore();
+      // Base de données (collection)  document pays
+      const dbpartie = collection(firestore, "partie");
+      // Liste des pays synchronisée
+      const query = await onSnapshot(dbpartie, (snapshot) => {
+        //  Récupération des résultats dans listePaysSynchro
+        // On utilse map pour récupérer l'intégralité des données renvoyées
+        // on identifie clairement le id du document
+        // les rest parameters permet de préciser la récupération de toute la partie data
+        this.listePartieSynchro = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
+        this.listePartieSynchro.forEach(function (partie) {
+          const storage = getStorage();
+          const spaceRef = ref(storage, "partie/" + partie.photo);
+          //const spaceRef = ref(storage, "partie/buju.png");
+          getDownloadURL(spaceRef)
+            .then((url) => {
+              partie.photo = url;
+              // console.log("partie", partie);
+            })
+            .catch((error) => {
+              console.log("erreur downloadUrl", error);
+            });
+        });
+      });
+    },
+
+    previewImage: function (event) {
+      // Mise à jour de la photo du partie
+      this.file = this.$refs.file.files[0];
+      // Récupérer le nom du fichier pour la photo du partie
+      this.partie.photo = this.file.name;
+      // Reference to the DOM input element
+      // Reference du fichier à prévisualiser
+      var input = event.target;
+      // On s'assure que l'on a au moins un fichier à lire
+      if (input.files && input.files[0]) {
+        // Creation d'un filereader
+        // Pour lire l'image et la convertir en base 64
+        var reader = new FileReader();
+        // fonction callback appellée lors que le fichier a été chargé
+        reader.onload = (e) => {
+          // Read image as base64 and set to imageData
+          // lecture du fichier pour mettre à jour
+          // la prévisualisation
+          this.imageData = e.target.result;
+        };
+        // Demarrage du reader pour la transformer en data URL (format base 64)
+        reader.readAsDataURL(input.files[0]);
+      }
+    },
+
+    async createPartie() {
+      const firestore = getFirestore();
+      const storage = getStorage();
+      const refStorage = ref(storage, "partie/" + this.partie.photo);
+      const dbPartie = collection(firestore, "partie");
+      const docRef = await addDoc(dbPartie, {
+        nom: this.nom,
+        partie: this.partie,
+      });
+      console.log("document crée avec le id : ", docRef.id);
+    },
+    async updatePartie(partie) {
+      const firestore = getFirestore();
+      const docRef = doc(firestore, "partie", partie.id);
+      await updateDoc(docRef, {
+        nom: partie.nom,
+        partie: partie.partie,
+      });
+    },
+    async deletePartie(partie) {
+      const firestore = getFirestore();
+      const docRef = doc(firestore, "partie", partie.id);
+      await deleteDoc(docRef);
+    },
   },
 };
 </script>

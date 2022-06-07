@@ -1,4 +1,5 @@
 <template>
+  <div>
   <header>
     <MenuView />
   </header>
@@ -7,6 +8,7 @@
   <footer>
     <FooterView></FooterView>
   </footer>
+  </div>
 </template>
 
 <script>

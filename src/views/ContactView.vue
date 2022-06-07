@@ -1,12 +1,14 @@
 <template>
-  <header>
-    <MenuView />
-  </header>
-  <main class="min-h-screen bg-Noirr"></main>
+  <div>
+    <header>
+      <MenuView />
+    </header>
+    <main class="min-h-screen bg-Noirr"></main>
 
-  <footer>
-    <FooterView></FooterView>
-  </footer>
+    <footer>
+      <FooterView></FooterView>
+    </footer>
+  </div>
 </template>
 
 <script>

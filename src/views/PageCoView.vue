@@ -4,100 +4,42 @@
       <MenuView />
     </header>
     <main class="min-h-screen bg-Noirr text-Blancc">
-      <h2 class="py-15 p-8 text-center font-quicksand text-8xl font-semibold">Time<span class="text-Orangee">2</span>match</h2>
+      <h2 class="p-8 text-center font-quicksand text-8xl font-semibold">Time<span class="text-Orangee">2</span>match</h2>
+      <h3 class="-mt-8 text-center text-4xl">Connexion</h3>
 
-      <div class="text-Noirr">
-        <div class="">
-          <div class="">
-            <div class="">
-              <div class="">
-                <h5 style="color: white">Connexion</h5>
+      <div class="mt-14 text-Noirr">
+        <div class="flex place-content-center">
+          <form @submit.prevent="onCnx" class="rounded-xl border-2 border-Orangee p-10">
+            <div class="w-96">
+              <div>
+                <p class="mb-6 font-quicksand text-lg">Connecte toi pour avoir accès à des fonctionnalités supplémentaires :</p>
               </div>
-
-              <form @submit.prevent="onCnx">
-                <div class="">
-                  <div class="">
-                    <div class="">
-                      <div class="input-group-prep">
-                        <span class="input-group-text">Email</span>
-                      </div>
-                      <input class="form-control" placeholder="Adresse mail" type="email" v-model="user.email" required />
-                    </div>
-                    <div class="">
-                      <div class="">
-                        <span class="input-group-text">Mot de passe</span>
-                      </div>
-                      <input class="form-control" placeholder="Mot de passe" :type="type" v-model="user.password" required />
-                      <div class="input-group-after">
-                        <button class="btn btn-light" @click.prevent="affiche()">
-                          <i class="fa fa-eye fa-lg"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="alert alert-warning" role="alert">
-                    {{ message }}
-                  </div>
-                </div>
-
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-dark float-left">Connexion</button>
-                  <button type="button" class="btn btn-dark float-right" @click="onDcnx()">Deconnexion</button>
-                </div>
-              </form>
-            </div>
-
-            <div class="col-6">
-              <div class="card-header">
-                <h5 style="color: white">S'inscrire</h5>
+              <div>
+                <input
+                  class="form-control mb-2 rounded-2xl placeholder:text-center hover:border-2 hover:border-Orangee"
+                  placeholder="Adresse mail"
+                  type="email"
+                  v-model="user.email"
+                  required
+                />
               </div>
-
-              <form>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">Login</span>
-                      </div>
-                      <input class="form-control" placeholder="Login" required />
-                    </div>
-
-                    <div class="w-100 mb-3 text-center" v-if="imageData">
-                      <img class="preview img-fluid" :src="imageData" />
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">Photo</span>
-                      </div>
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" ref="file" id="file" @change="previewImage" />
-                        <label class="custom-file-label" for="file">Sélectionner l'image</label>
-                      </div>
-                    </div>
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">Email</span>
-                      </div>
-                      <input class="form-control" placeholder="Adresse mail" type="email" required />
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">Mot de passe</span>
-                      </div>
-                      <input class="form-control" placeholder="Mot de passe" required />
-                    </div>
-                  </div>
+              <div>
+                <input
+                  class="form-control rounded-2xl placeholder:text-center hover:border-2 hover:border-Orangee"
+                  placeholder="Mot de passe"
+                  :type="type"
+                  v-model="user.password"
+                  required
+                />
+              </div>
+              <div class="mt-8 flex place-content-center"><boutton type="submit">Connexion</boutton></div>
+              <div class="mt-2 flex place-content-center">
+                <div class="alert alert-warning w-fit text-xs" role="alert">
+                  {{ message }}
                 </div>
-
-                <div class="card-footer text-center">
-                  <button type="submit" class="btn btn-dark">Créer Compte</button>
-                </div>
-              </form>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </main>

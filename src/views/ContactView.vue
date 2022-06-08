@@ -33,28 +33,28 @@
               </form>
             </div>
           </div>
-           <form>
-                <input
-                  type="mail"
-                  class="my-5 w-full rounded-full border-8 font-quicksand font-semibold text-Noirr placeholder:text-center placeholder:font-quicksand placeholder:text-lg placeholder:font-bold placeholder:text-Noirr focus:border-Orangee"
-                  placeholder="Email  :"
-                />
-              </form>
-               <form>
-                <input
-                  type="text"
-                  class="my-5 w-full rounded-full border-8 font-quicksand font-semibold text-Noirr placeholder:text-center placeholder:font-quicksand placeholder:text-lg placeholder:font-bold placeholder:text-Noirr focus:border-Orangee"
-                  placeholder="Objet  :"
-                />
-              </form>
+          <form>
+            <input
+              type="mail"
+              class="my-5 w-full rounded-full border-8 font-quicksand font-semibold text-Noirr placeholder:text-center placeholder:font-quicksand placeholder:text-lg placeholder:font-bold placeholder:text-Noirr focus:border-Orangee"
+              placeholder="Email  :"
+            />
+          </form>
+          <form>
+            <input
+              type="text"
+              class="my-5 w-full rounded-full border-8 font-quicksand font-semibold text-Noirr placeholder:text-center placeholder:font-quicksand placeholder:text-lg placeholder:font-bold placeholder:text-Noirr focus:border-Orangee"
+              placeholder="Objet  :"
+            />
+          </form>
 
-               <form>
-                <input
-                  type="text"
-                  class="my-5 w-full h-80 rounded-lg border-8 font-quicksand font-semibold text-Noirr  placeholder:font-quicksand placeholder:text-lg placeholder:font-bold placeholder:text-Noirr focus:border-Orangee"
-                  placeholder="Message  :"
-                />
-              </form>
+          <form>
+            <input
+              type="text"
+              class="my-5 h-80 w-full rounded-lg border-8 font-quicksand font-semibold text-Noirr placeholder:font-quicksand placeholder:text-lg placeholder:font-bold placeholder:text-Noirr focus:border-Orangee"
+              placeholder="Message  :"
+            />
+          </form>
         </div>
         <Barre_droite></Barre_droite>
       </div>

@@ -10,18 +10,15 @@
         <div class="justify-center">
           <div>
             <h2 class="py-15 p-8 text-center font-quicksand text-8xl font-semibold">Time<span class="text-Orangee">2</span>match</h2>
-            
           </div>
 
-          <div class=" rounded-lg bg-Blancc flex justify-around ">
-            <p class="text-Noirr font-quicksand font-bold">Afficher uniquement les parties de...</p>
-            <select class="bg-Noirr  text-Orangee" name="sport" >
+          <div class="flex justify-around rounded-lg bg-Blancc">
+            <p class="font-quicksand font-bold text-Noirr">Afficher uniquement les parties de...</p>
+            <select class="bg-Noirr text-Orangee" name="sport">
               <option class="hover:bg-Orangee hover:text-Blancc" value="Basketball">Basketball</option>
               <option value="Football">Football</option>
               <option value="Voleyball">Voleyball</option>
-             
             </select>
-
           </div>
 
           <div class="flex justify-center">

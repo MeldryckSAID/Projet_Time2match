@@ -35,11 +35,11 @@
     </div>
 
     <div class="flex flex-col justify-center hover:border-b-4 hover:border-b-white">
-      <RouterLink class="block py-2 px-4" to="/">
+      <RouterLink class="block py-2 px-4" to="/user">
         <div class="grid">
           <span v-if="avatar != null" class="mr-3">
             <img class="avatar h-10 w-auto" :src="avatar" />
-            <RouterLink to="/" class="text-xs">{{ name }}</RouterLink>
+            <RouterLink to="/user" class="text-xs">{{ name }}</RouterLink>
           </span>
         </div>
         <div v-if="avatar != null" class="hidden pt-9">
@@ -53,8 +53,11 @@
 
     <div class="menu" v-if="isAdmin">
       <select>
-        <option>TERRAINS</option>
-        <option>PARTIES</option>
+        <option ref="/terrains">essaie 1</option>
+        <option ref="/user">essaie 2</option>
+        <option>essaie 3</option>
+        <option>essaie 4</option>
+        <option>essaie 5</option>
       </select>
     </div>
 
@@ -188,7 +191,7 @@ export default {
 
 <style>
 /* Import Styles application */
-@import "../assets/style.css";
+@import "../assets/styles.css";
 
 .avatar {
   vertical-align: middle;

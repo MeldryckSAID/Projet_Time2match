@@ -5,51 +5,75 @@
     </header>
     <main class="min-h-screen bg-Noirr text-Blancc">
       <h2 class="p-8 text-center font-quicksand text-8xl font-semibold">Time<span class="text-Orangee">2</span>match</h2>
-      <h3 class="-mt-8 text-center text-4xl">Connexion</h3>
+      <h3 class="-mt-8 text-center text-4xl">Inscription</h3>
 
-      <div class="mt-14 text-Noirr">
-        <div class="flex place-content-center">
-          <form @submit.prevent="onCnx" class="rounded-xl border-2 border-Orangee p-10">
-            <div class="w-96">
-              <div>
-                <p class="mb-6 font-quicksand text-lg">Connecte toi pour avoir accès à des fonctionnalités supplémentaires :</p>
-              </div>
-              <div>
-                <input
-                  class="form-control mb-2 rounded-2xl placeholder:text-center hover:border-2 hover:border-Orangee"
-                  placeholder="Adresse mail"
-                  type="email"
-                  v-model="user.email"
-                  required
-                />
-              </div>
-              <div>
-                <input
-                  class="form-control rounded-2xl placeholder:text-center hover:border-2 hover:border-Orangee"
-                  placeholder="Mot de passe"
-                  :type="type"
-                  v-model="user.password"
-                  required
-                />
-              </div>
-              <div class="mt-8 flex place-content-center"><boutton type="submit">Connexion</boutton></div>
-              <div class="mt-2 flex place-content-center">
-                <div class="alert alert-warning w-fit text-xs" role="alert">
-                  {{ message }}
-                </div>
-              </div>
+      <form class="mt-10 flex place-content-center">
+        <div class="w-fit rounded-xl border-2 border-Orangee p-10">
+          <div class="mb-3">
+            <input
+              class="form-control rounded-2xl placeholder:text-center hover:border-2 hover:border-Orangee"
+              placeholder="Nom"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              class="form-control rounded-2xl placeholder:text-center hover:border-2 hover:border-Orangee"
+              placeholder="Prénom"
+              required
+            />
+          </div>
+          <div class="mb-3"><input type="date" class="text-gray-800" id="start" name="trip-start" value="2018-07-22" /></div>
+          <div class="mb-3">
+            <div class="w-100 mb-3 text-center" v-if="imageData">
+              <img class="preview img-fluid" :src="imageData" />
             </div>
-          </form>
+            <div class="custom-file mb-3 text-center">
+              <input type="file" class="custom-file-input" ref="file" id="file" @change="previewImage" />
+              <label class="custom-file-label" for="file">Sélectionner l'image</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input
+              class="form-control rounded-2xl placeholder:text-center hover:border-2 hover:border-Orangee"
+              placeholder="username"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              class="form-control rounded-2xl placeholder:text-center hover:border-2 hover:border-Orangee"
+              placeholder="Adresse mail"
+              type="email"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              class="form-control rounded-2xl placeholder:text-center hover:border-2 hover:border-Orangee"
+              placeholder="Mot de passe"
+              :type="type"
+              v-model="user.password"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="text"
+              class="my-5 h-40 w-full rounded-2xl border-2 font-quicksand font-semibold text-Noirr placeholder:text-center placeholder:font-quicksand placeholder:text-lg placeholder:text-gray-800 hover:border-2 hover:border-Orangee focus:border-Orangee"
+              placeholder="Message  :"
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              class="form-control rounded-2xl placeholder:text-center hover:border-2 hover:border-Orangee"
+              placeholder="Nombre de parties créer"
+              required
+            />
+          </div>
+          <div class="mt-8 flex place-content-center"><boutton type="submit">Connexion</boutton></div>
         </div>
-      </div>
-      <div class="mt-3 text-center">
-        <p>Vous n’avez pas de compte ?</p>
-        <div>
-          <RouterLink class="block py-2 px-4" to="/inscription">
-            <h5 class="font-quicksand text-base font-bold uppercase text-Orangee">S’inscire</h5>
-          </RouterLink>
-        </div>
-      </div>
+      </form>
     </main>
 
     <footer>

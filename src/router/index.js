@@ -17,6 +17,7 @@ import PageCoView from "../views/PageCoView.vue";
 import ContactView from "../views/ContactView.vue";
 import ChatView from "../views/ChatView.vue";
 import userView from "../views/userView.vue";
+import inscriptionView from "../views/inscriptionView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,7 @@ const router = createRouter({
     { path: "/contact", name: "ContactView", component: ContactView },
     { path: "/chat", name: "ChatView", component: ChatView },
     { path: "/user", name: "userView", component: userView },
+    { path: "/inscription", name: "inscriptionView", component: inscriptionView },
   ],
 });
 

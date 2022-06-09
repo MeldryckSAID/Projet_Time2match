@@ -8,10 +8,10 @@
       <div class="content">
         <h2>Axel Touchais<br /><span>Designer</span></h2>
       </div>
-      <div class="social-icons">
+      <!-- <div class="social-icons">
         <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         <a href="#"><i class="material-icons"></i></a>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

@@ -8,10 +8,10 @@
       <div class="content">
         <h2>Meldryck Saïd<br /><span>Développeur</span></h2>
       </div>
-      <div class="social-icons">
+      <!-- <div class="social-icons">
         <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
         <a href="#"><i class="material-icons"></i></a>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

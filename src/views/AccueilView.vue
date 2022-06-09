@@ -16,7 +16,7 @@
             <schearchView></schearchView>
 
             <div class="flex justify-center">
-              <chevron class="mt-14" />
+              <a href="#down"> <chevron class="mt-14" /></a>
             </div>
           </div>
 
@@ -25,7 +25,7 @@
           </div>
         </div>
 
-        <div class="box2">
+        <div class="box2" id="down">
           <h3 class="p-5 font-quicksand text-3xl font-medium">Time2Match, c’est quoi ?</h3>
           <p class="p-2 font-quicksand text-lg font-normal">
             L’objectif est simple, pouvoir retrouver ses <br />

@@ -71,7 +71,7 @@
               required
             />
           </div>
-          <div class="mt-8 flex place-content-center"><boutton type="submit">Connexion</boutton></div>
+          <div class="mt-8 flex place-content-center"><boutton type="submit">Inscription</boutton></div>
         </div>
       </form>
     </main>

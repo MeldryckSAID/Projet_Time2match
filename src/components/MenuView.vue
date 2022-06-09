@@ -34,12 +34,12 @@
       </RouterLink>
     </div>
 
-    <div class="flex flex-col justify-center hover:border-b-4 hover:border-b-white">
+    <div class="flex flex-col hover:border-b-4 hover:border-b-white">
       <RouterLink class="block py-2 px-4" to="/user">
-        <div class="grid">
+        <div class="">
           <span v-if="avatar != null" class="mr-3">
-            <img class="avatar h-10 w-auto" :src="avatar" />
-            <RouterLink to="/user" class="text-xs">{{ name }}</RouterLink>
+            <img class="avatar h-16 w-auto" :src="avatar" />
+            <RouterLink to="/user" class="text-lg">{{ name }}</RouterLink>
           </span>
         </div>
         <div v-if="avatar != null" class="hidden pt-9">
@@ -51,7 +51,7 @@
       </RouterLink>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <button
         class="navbar-toggler"
         type="button"
@@ -65,7 +65,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
-        <li class="nav-item dropdown">
+        <div class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -78,7 +78,7 @@
           >
             Administration
           </a>
-          <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <div class="dropdown-item">
               <RouterLink to="/terrains">TERRAINS</RouterLink>
             </div>
@@ -87,7 +87,7 @@
               <RouterLink to="/parties">PARTIES</RouterLink>
             </div>
           </div>
-        </li>
+        </div>
       </div>
     </nav>
 

@@ -32,7 +32,9 @@
                   required
                 />
               </div>
-              <div class="mt-8 flex place-content-center"><boutton type="submit">Connexion</boutton></div>
+              <div class="mt-8 flex place-content-center">
+                <boutton type="submit">Connexion</boutton>
+              </div>
               <div class="mt-2 flex place-content-center">
                 <div class="alert alert-warning w-fit text-xs" role="alert">
                   {{ message }}
@@ -181,8 +183,3 @@ a:hover {
   text-decoration: none;
 }
 </style>
-
-<!-- 
-<style>
-@import "../assets/seco.css";
-</style> -->

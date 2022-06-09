@@ -8,13 +8,12 @@
 
     <div class="flex flex-col hover:border-b-4 hover:border-b-white">
       <RouterLink class="block py-2 px-4" to="/terrains">
-        <LogoTerrain   ></LogoTerrain>
+        <LogoTerrain></LogoTerrain>
         <h5 class="font-quicksand text-base font-bold uppercase text-Noirr">Trouver <br />Un terrain</h5>
       </RouterLink>
     </div>
 
     <div class="flex flex-col justify-center hover:border-b-4 hover:border-b-white">
-      
       <RouterLink class="block py-2 px-4" to="/parties">
         <LogoPartie class="text-Noirr"></LogoPartie>
         <h5 class="font-quicksand text-base font-bold uppercase text-Noirr">Trouver <br />Une Partie</h5>
@@ -88,11 +87,11 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <div class="dropdown-item">
-              <RouterLink to="/terrains">TERRAINS</RouterLink>
+              <RouterLink to="/modifterrain">TERRAINS</RouterLink>
             </div>
 
             <div class="dropdown-item">
-              <RouterLink to="/parties">PARTIES</RouterLink>
+              <RouterLink to="/modifpartie">PARTIES</RouterLink>
             </div>
           </div>
         </div>

@@ -18,6 +18,8 @@ import ContactView from "../views/ContactView.vue";
 import ChatView from "../views/ChatView.vue";
 import userView from "../views/userView.vue";
 import inscriptionView from "../views/inscriptionView.vue";
+import modifPartieView from "../views/modifPartieView.vue";
+import modifTerrainView from "../views/modifTerrainView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,6 +36,8 @@ const router = createRouter({
     { path: "/chat", name: "ChatView", component: ChatView },
     { path: "/user", name: "userView", component: userView },
     { path: "/inscription", name: "inscriptionView", component: inscriptionView },
+    { path: "/modifpartie", name: "modifPartieView", component: modifPartieView },
+    { path: "/modifterrain", name: "modifTerrainView", component: modifTerrainView },
   ],
 });
 

@@ -1,14 +1,8 @@
 <template>
   <div class="card">
     <div class="imgBox">
-      <img
-        src="https://images.unsplash.com/photo-1588731222899-68315ddd5e8e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-        alt=""
-      />
-      <img
-        src="https://images.unsplash.com/photo-1588731247530-4076fc99173e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-        alt=""
-      />
+      <img src="../../../public/Img/axel.png" alt="" />
+      <img src="../../../public/Img/axel.png" alt="" />
     </div>
     <div class="details">
       <div class="content">

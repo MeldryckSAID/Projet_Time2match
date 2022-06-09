@@ -88,6 +88,15 @@
                                     required
                                   />
                                 </div>
+                                <div class="flex justify-evenly">
+                                  <Boutton class="m-5" type="submit" @click.prevent="updatePartie(partie)" title="Modification">
+                                    Modifier
+                                  </Boutton>
+
+                                  <Boutton class="m-5" type="submit" @click.prevent="deletePartie(partie)" title="Suppression"
+                                    >Delete</Boutton
+                                  >
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -259,6 +268,21 @@ export default {
         partie: this.partie,
       });
       console.log("document crée avec le id : ", docRef.id);
+    },
+    async updatePartie(partie) {
+      const firestore = getFirestore();
+      const docRef = doc(firestore, "partie", partie.id);
+      await updateDoc(docRef, {
+        type: partie.type,
+        sport: partie.sport,
+        lieux: partie.lieux,
+        date: partie.date,
+      });
+    },
+    async deletePartie(partie) {
+      const firestore = getFirestore();
+      const docRef = doc(firestore, "partie", partie.id);
+      await deleteDoc(docRef);
     },
   },
 };

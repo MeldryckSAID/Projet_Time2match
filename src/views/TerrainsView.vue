@@ -77,15 +77,6 @@
                                     required
                                   />
                                 </div>
-                                <div class="flex justify-evenly">
-                                  <Boutton class="m-5" type="submit" @click.prevent="updateTerrain(terrain)" title="Modification">
-                                    Modifier
-                                  </Boutton>
-
-                                  <Boutton class="m-5" type="submit" @click.prevent="deleteTerrain(terrain)" title="Suppression"
-                                    >Delete</Boutton
-                                  >
-                                </div>
                               </div>
                             </div>
                           </div>
@@ -259,21 +250,6 @@ export default {
         terrain: this.terrain,
       });
       console.log("document crée avec le id : ", docRef.id);
-    },
-    async updateTerrain(terrain) {
-      const firestore = getFirestore();
-      const docRef = doc(firestore, "terrain", terrain.id);
-      await updateDoc(docRef, {
-        type: terrain.type,
-        fréquentions: terrain.fréquentions,
-        lieux: terrain.lieux,
-        date: terrain.date,
-      });
-    },
-    async deleteTerrain(terrain) {
-      const firestore = getFirestore();
-      const docRef = doc(firestore, "terrain", terrain.id);
-      await deleteDoc(docRef);
     },
   },
 };

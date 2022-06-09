@@ -35,6 +35,13 @@
     </div>
 
     <div class="flex flex-col hover:border-b-4 hover:border-b-white">
+      <RouterLink class="block py-2 px-4" to="/chat">
+        <ChatIcon></ChatIcon>
+        <h5 class="font-quicksand text-base font-bold uppercase text-Noirr">Chat</h5>
+      </RouterLink>
+    </div>
+
+    <div class="flex flex-col hover:border-b-4 hover:border-b-white">
       <RouterLink class="block py-2 px-4" to="/user">
         <div class="">
           <span v-if="avatar != null" class="mr-3">
@@ -96,6 +103,8 @@
 </template>
 
 <script>
+import { ChatIcon } from "@heroicons/vue/outline";
+
 import Logo from "./logo.vue";
 import LogoTerrain from "./menu/logoterrain.vue";
 import LogoPartie from "./menu/logopartie.vue";
@@ -124,6 +133,7 @@ export default {
     LogoSeco,
     LogoSports,
     Logopartenaire,
+    ChatIcon,
   },
   data() {
     return {

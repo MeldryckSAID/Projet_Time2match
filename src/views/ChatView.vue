@@ -1,101 +1,108 @@
 <template>
-  <div class="container">
-    <div class="card-header">
-      <h5 style="color: white">Chat</h5>
-    </div>
-
-    <div v-if="user == null">
-      <h6 class="alert alert-warning text-center" role="alert">Vous devez être connecté pour utiliser le Chat !!</h6>
-    </div>
-    <div v-else>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Sélectionner un utilisateur</span>
+  <div>
+    <header>
+      <MenuView />
+    </header>
+    <main class="min-h-screen bg-Noirr text-Blancc">
+      <div class="container">
+        <div class="card-header">
+          <h5 style="color: white">Chat</h5>
         </div>
-        <select class="custom-select" v-model="userSelected" @change="selectUser">
-          <option selected disabled value="">...</option>
-          <option v-for="util in listeUsers" :key="util.uid" :value="util">{{ util.login }}</option>
-        </select>
-      </div>
-      <div v-if="userSelected != null">
-        <form class="mb-3" @submit.prevent="createDisc()">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Nouveau fil avec {{ userSelected.login }}</span>
-            </div>
-            <input type="text" class="form-control" v-model="libelle" required />
-            <button class="btn btn-light" type="submit" title="Création">
-              <i class="fa fa-save fa-lg"></i>
-            </button>
-          </div>
-        </form>
 
-        <h5>Vos fils de discussion avec : {{ userSelected.login }}</h5>
-        <div v-if="chat.length > 0">
-          <table class="text-light table">
-            <tbody>
-              <tr v-for="disc in chat" :key="disc.uid">
-                <td>
-                  {{ disc.libelle }} - créer par
-                  <span v-if="disc.fil[0] == user.uid">vous</span>
-                  <span v-else>{{ userSelected.login }}</span>
-                  le {{ dateFr(disc.creation) }}
-                </td>
-                <td>
-                  <button class="btn btn-light mr-3" type="button" @click="viewFil(disc)" title="Voir ce fil">
-                    <i class="fa fa-eye fa-lg"></i>
-                  </button>
-                  <button class="btn btn-light" type="button" @click="deleteFil(disc)" title="Supprimer ce fil">
-                    <i class="fa fa-trash fa-lg"></i>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div v-if="user == null">
+          <h6 class="alert alert-warning text-center" role="alert">Vous devez être connecté pour utiliser le Chat !!</h6>
         </div>
-        <div v-else>Aucun fil de discussion</div>
-
-        <hr style="background-color: white" />
-
-        <div v-if="discussion != null">
-          <h5>Discussion : {{ discussion.libelle }}</h5>
-          <hr />
+        <div v-else>
           <div class="input-group mb-3">
-            <textarea class="form-control msg" rows="3" placeholder="Message" v-model="message"></textarea>
             <div class="input-group-prepend">
-              <button class="btn btn-dark" @click="sendMsg()">
-                <i class="fa fa-share-square fa-lg fa-2x"></i>
-              </button>
+              <span class="input-group-text">Sélectionner un utilisateur</span>
             </div>
+            <select class="custom-select" v-model="userSelected" @change="selectUser">
+              <option selected disabled value="">...</option>
+              <option v-for="util in listeUsers" :key="util.uid" :value="util">{{ util.login }}</option>
+            </select>
           </div>
-
-          <div v-for="disc in chat" :key="disc.id">
-            <div v-if="disc.id == discussion.id">
-              <div v-for="msg in sortMsgByDate(disc.msg)" :key="msg.date">
-                <div class="row mb-3" v-if="msg.by == user.uid">
-                  <div class="col-4">
-                    <div class="ml-3 text-left">
-                      <img class="avatar" :src="userInfo[0].avatar" />
-                      {{ userInfo[0].login }} - {{ dateFr(msg.date) }}
-                    </div>
-                  </div>
-                  <div class="col-8 mb-1 text-center">
-                    <div class="recep">
-                      <p>{{ msg.contenu }}</p>
-                    </div>
-                  </div>
+          <div v-if="userSelected != null">
+            <form class="mb-3" @submit.prevent="createDisc()">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Nouveau fil avec {{ userSelected.login }}</span>
                 </div>
+                <input type="text" class="form-control" v-model="libelle" required />
+                <button class="btn btn-light" type="submit" title="Création">
+                  <i class="fa fa-save fa-lg"></i>
+                </button>
+              </div>
+            </form>
 
-                <div class="row mb-3" v-if="msg.by == userSelected.uid">
-                  <div class="col-8 text-center">
-                    <div class="w-70 emet">
-                      <p>{{ msg.contenu }}</p>
+            <h5>Vos fils de discussion avec : {{ userSelected.login }}</h5>
+            <div v-if="chat.length > 0">
+              <table class="text-light table">
+                <tbody>
+                  <tr v-for="disc in chat" :key="disc.uid">
+                    <td>
+                      {{ disc.libelle }} - créer par
+                      <span v-if="disc.fil[0] == user.uid">vous</span>
+                      <span v-else>{{ userSelected.login }}</span>
+                      le {{ dateFr(disc.creation) }}
+                    </td>
+                    <td>
+                      <button class="btn btn-light mr-3" type="button" @click="viewFil(disc)" title="Voir ce fil">
+                        <i class="fa fa-eye fa-lg"></i>
+                      </button>
+                      <button class="btn btn-light" type="button" @click="deleteFil(disc)" title="Supprimer ce fil">
+                        <i class="fa fa-trash fa-lg"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div v-else>Aucun fil de discussion</div>
+
+            <hr style="background-color: white" />
+
+            <div v-if="discussion != null">
+              <h5>Discussion : {{ discussion.libelle }}</h5>
+              <hr />
+              <div class="input-group mb-3">
+                <textarea class="form-control msg" rows="3" placeholder="Message" v-model="message"></textarea>
+                <div class="input-group-prepend">
+                  <button class="btn btn-dark" @click="sendMsg()">
+                    <i class="fa fa-share-square fa-lg fa-2x"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div v-for="disc in chat" :key="disc.id">
+                <div v-if="disc.id == discussion.id">
+                  <div v-for="msg in sortMsgByDate(disc.msg)" :key="msg.date">
+                    <div class="row mb-3" v-if="msg.by == user.uid">
+                      <div class="col-4">
+                        <div class="ml-3 text-left">
+                          <img class="avatar" :src="userInfo[0].avatar" />
+                          {{ userInfo[0].login }} - {{ dateFr(msg.date) }}
+                        </div>
+                      </div>
+                      <div class="col-8 mb-1 text-center">
+                        <div class="recep">
+                          <p class="font-bold text-Noirr">{{ msg.contenu }}</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="ml-3 text-left">
-                      <img class="avatar" :src="userSelected.avatar" />
-                      {{ userSelected.login }} - {{ dateFr(msg.date) }}
+
+                    <div class="row mb-3" v-if="msg.by == userSelected.uid">
+                      <div class="col-8 text-center">
+                        <div class="w-70 emet">
+                          <p class="font-bold text-Noirr">{{ msg.contenu }}</p>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="ml-3 text-left">
+                          <img class="avatar" :src="userSelected.avatar" />
+                          {{ userSelected.login }} - {{ dateFr(msg.date) }}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -104,11 +111,18 @@
           </div>
         </div>
       </div>
-    </div>
+    </main>
+
+    <footer>
+      <FooterView></FooterView>
+    </footer>
   </div>
 </template>
 
 <script>
+import MenuView from "../components/MenuView.vue";
+import FooterView from "../components/FooterView.vue";
+
 // Bibliothèque Firestore : import des fonctions
 import {
   getFirestore, // Obtenir le Firestore
@@ -136,6 +150,10 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-auth.
 
 export default {
   name: "ChatView",
+  components: {
+    MenuView,
+    FooterView,
+  },
   data() {
     // Les données
     return {
@@ -349,7 +367,7 @@ export default {
 }
 .emet {
   color: black;
-  background-color: lightyellow;
+  background-color: rgb(249, 149, 237);
   padding: 10px;
   border-radius: 50px 20px;
   word-wrap: break-word;
@@ -363,7 +381,7 @@ export default {
 }
 .msg {
   color: black;
-  background-color: lightgrey;
+  background-color: rgb(0, 0, 0);
   padding: 10px;
   border-radius: 20px 20px;
 }

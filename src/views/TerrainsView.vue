@@ -43,7 +43,7 @@
                   </tr>
                 </thead>
                 <div class="mx-10 flex justify-center">
-                  <tbody class="grid grid-cols-3">
+                  <tbody class="grid grid-cols-2">
                     <tr v-for="terrain in filterBytype" :key="terrain.id">
                       <td>
                         <form>
@@ -60,21 +60,20 @@
                                 />
 
                                 <div class="flex p-2">
+                                  <People class="flex h-full w-full p-2"> </People>
+                                  <input
+                                    type="text"
+                                    class="form-control leading-tightbg-Orangee w-full appearance-none border-4 bg-transparent py-2 px-4 text-center font-quicksand text-xl font-bold text-Noirr hover:border-Orangee focus:border-Noirr"
+                                    v-model="terrain.lieux"
+                                    required
+                                  />
+                                </div>
+                                <div class="flex p-2">
                                   <Foot_card class="flex p-2"></Foot_card>
                                   <input
                                     type="text"
                                     class="form-control leading-tightbg-Orangee w-full appearance-none border-4 bg-transparent py-2 px-4 text-center font-quicksand text-xl font-bold text-Noirr hover:border-Orangee focus:border-Noirr"
                                     v-model="terrain.fréquentions"
-                                    required
-                                  />
-                                </div>
-
-                                <div class="flex p-2">
-                                  <Loca class="flex p-2"></Loca>
-                                  <input
-                                    type="text"
-                                    class="form-control leading-tightbg-Orangee w-full appearance-none border-4 bg-transparent py-2 px-4 text-center font-quicksand text-xl font-bold text-Noirr hover:border-Orangee focus:border-Noirr"
-                                    v-model="terrain.lieux"
                                     required
                                   />
                                 </div>
@@ -143,6 +142,7 @@ import {
   deleteDoc,
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
+import People from "../components/icone_card/people.vue";
 
 export default {
   name: "ListeView",
@@ -166,6 +166,7 @@ export default {
     Horloge,
     Loca,
     Boutton,
+    People,
   },
 
   computed: {

@@ -23,7 +23,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: "/", name: "AccueilView", component: AccueilView },
-    { path: "/terrains", name: "TerrainsView", component: TerrainsView, beforeEnter: guard },
+    { path: "/terrains", name: "TerrainsView", component: TerrainsView },
     { path: "/parties", name: "PartiesView", component: PartiesView },
     { path: "/sports", name: "SportsView", component: SportsView },
     { path: "/partenaires", name: "PartenairesView", component: PartenairesView },

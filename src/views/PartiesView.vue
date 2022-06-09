@@ -42,14 +42,14 @@
                     </th>
                   </tr>
                 </thead>
-                <div class="flex justify-center mx-10">
+                <div class="mx-10 flex justify-center">
                   <tbody class="grid grid-cols-3">
                     <tr v-for="partie in filterBytype" :key="partie.id">
                       <td>
                         <form>
-                          <div class="input-group w-full mx-10">
-                            <div class="p-2  ">
-                              <div class="flex w-max flex-col items-center  bg-Blancc">
+                          <div class="input-group mx-10 w-full">
+                            <div class="p-2">
+                              <div class="flex w-max flex-col items-center bg-Blancc">
                                 <img class="center h-48 w-full rounded-t-lg object-cover" :src="partie.image" alt="Image type présente" />
 
                                 <input
@@ -63,7 +63,7 @@
                                   <Foot_card class="flex p-2"></Foot_card>
                                   <input
                                     type="text"
-                                    class="form-control leading-tightbg-Orangee w-full appearance-none bg-Orangee py-2 px-4 text-center font-quicksand text-xl font-bold text-Noirr"
+                                    class="form-control leading-tightbg-Orangee w-full appearance-none border-4 bg-transparent py-2 px-4 text-center font-quicksand text-xl font-bold text-Noirr hover:border-Orangee focus:border-Noirr"
                                     v-model="partie.sport"
                                     required
                                   />
@@ -73,7 +73,7 @@
                                   <Horloge class="flex p-2"></Horloge>
                                   <input
                                     type="text"
-                                    class="form-control leading-tightbg-Orangee w-full appearance-none bg-Orangee py-2 px-4 text- font-quicksand text-lg font-bold text-Noirr"
+                                    class="form-control leading-tightbg-Orangee text- w-full appearance-none border-4 bg-transparent py-2 px-4 font-quicksand text-lg font-bold text-Noirr hover:border-Orangee focus:border-Noirr"
                                     v-model="partie.date"
                                     required
                                   />
@@ -83,7 +83,7 @@
                                   <Loca class="flex p-2"></Loca>
                                   <input
                                     type="text"
-                                    class="form-control leading-tightbg-Orangee w-full appearance-none bg-Orangee py-2 px-4 text-center font-quicksand text-xl font-bold text-Noirr"
+                                    class="form-control leading-tightbg-Orangee w-full appearance-none border-4 bg-transparent py-2 px-4 text-center font-quicksand text-xl font-bold text-Noirr hover:border-Orangee focus:border-Noirr"
                                     v-model="partie.lieux"
                                     required
                                   />
@@ -137,7 +137,6 @@ import Horloge from "../components/icone_card/horloge.vue";
 import Loca from "../components/icone_card/loca.vue";
 import Boutton from "../components/boutton.vue";
 
-
 import {
   getStorage, // Obtenir le Cloud Storage
   ref, // Pour créer une référence à un fichier à uploader
@@ -159,7 +158,6 @@ export default {
   name: "ListeView",
   data() {
     return {
-     
       listePartieSynchro: [],
       filter: "",
       image: null,
@@ -276,7 +274,9 @@ export default {
       const docRef = doc(firestore, "partie", partie.id);
       await updateDoc(docRef, {
         type: partie.type,
-        partie: partie.partie,
+        sport: partie.sport,
+        lieux: partie.lieux,
+        date: partie.date,
       });
     },
     async deletePartie(partie) {

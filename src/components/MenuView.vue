@@ -1,5 +1,5 @@
 <template>
-  <div class="m-0 flex items-center justify-between bg-Orangee p-0 text-Noirr">
+  <div class="m-0 flex items-center justify-between bg-Orangee p-2 text-Noirr">
     <div class="flex flex-col hover:border-b-4 hover:border-b-white">
       <RouterLink class="block py-2 px-4" to="/">
         <Logo class="h-[100px] w-[100px]"></Logo>
@@ -8,12 +8,13 @@
 
     <div class="flex flex-col hover:border-b-4 hover:border-b-white">
       <RouterLink class="block py-2 px-4" to="/terrains">
-        <LogoTerrain></LogoTerrain>
+        <LogoTerrain   ></LogoTerrain>
         <h5 class="font-quicksand text-base font-bold uppercase text-Noirr">Trouver <br />Un terrain</h5>
       </RouterLink>
     </div>
 
     <div class="flex flex-col justify-center hover:border-b-4 hover:border-b-white">
+      
       <RouterLink class="block py-2 px-4" to="/parties">
         <LogoPartie class="text-Noirr"></LogoPartie>
         <h5 class="font-quicksand text-base font-bold uppercase text-Noirr">Trouver <br />Une Partie</h5>

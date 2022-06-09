@@ -42,27 +42,61 @@
                     </th>
                   </tr>
                 </thead>
-                <div class="flex justify-center">
+                <div class="flex justify-center mx-10">
                   <tbody class="grid grid-cols-3">
-                    <tr v-for="partie in filterByNom" :key="partie.id">
+                    <tr v-for="partie in filterBytype" :key="partie.id">
                       <td>
                         <form>
-                          <div class="input-group">
-                            <div class="p-2">
-                              <div class="flex flex-col items-center justify-center border-4 border-red-900">
-                                <img class="center h-48 w-72 rounded-t-lg object-cover" :src="partie.photo" alt="imgalt" />
+                          <div class="input-group w-full mx-10">
+                            <div class="p-2  ">
+                              <div class="flex w-max flex-col items-center  bg-Blancc">
+                                <img class="center h-48 w-full rounded-t-lg object-cover" :src="partie.image" alt="Image type présente" />
 
                                 <input
                                   type="text"
-                                  class="form-control w-full appearance-none bg-transparent py-2 px-4 text-center leading-tight text-Blancc placeholder:text-black focus:outline-none"
-                                  v-model="partie.nom"
+                                  class="form-control leading-tightbg-Orangee mb-5 w-full appearance-none bg-Orangee py-2 px-4 text-center font-quicksand text-xl font-bold text-Noirr"
+                                  v-model="partie.type"
                                   required
                                 />
-                                <button class="m-5" type="submit" @click.prevent="updatePartie(partie)" title="Modification">
-                                  Modifier
-                                </button>
 
-                                <button class="m-5" type="submit" @click.prevent="deletePartie(partie)" title="Suppression">Delete</button>
+                                <div class="flex p-2">
+                                  <Foot_card class="flex p-2"></Foot_card>
+                                  <input
+                                    type="text"
+                                    class="form-control leading-tightbg-Orangee w-full appearance-none bg-Orangee py-2 px-4 text-center font-quicksand text-xl font-bold text-Noirr"
+                                    v-model="partie.sport"
+                                    required
+                                  />
+                                </div>
+
+                                <div class="flex p-2">
+                                  <Horloge class="flex p-2"></Horloge>
+                                  <input
+                                    type="text"
+                                    class="form-control leading-tightbg-Orangee w-full appearance-none bg-Orangee py-2 px-4 text- font-quicksand text-lg font-bold text-Noirr"
+                                    v-model="partie.date"
+                                    required
+                                  />
+                                </div>
+
+                                <div class="flex p-2">
+                                  <Loca class="flex p-2"></Loca>
+                                  <input
+                                    type="text"
+                                    class="form-control leading-tightbg-Orangee w-full appearance-none bg-Orangee py-2 px-4 text-center font-quicksand text-xl font-bold text-Noirr"
+                                    v-model="partie.lieux"
+                                    required
+                                  />
+                                </div>
+                                <div class="flex justify-evenly">
+                                  <Boutton class="m-5" type="submit" @click.prevent="updatePartie(partie)" title="Modification">
+                                    Modifier
+                                  </Boutton>
+
+                                  <Boutton class="m-5" type="submit" @click.prevent="deletePartie(partie)" title="Suppression"
+                                    >Delete</Boutton
+                                  >
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -98,6 +132,11 @@ import FooterView from "../components/FooterView.vue";
 
 import Barre_droite from "../components/barre/barre_droite.vue";
 import Barre_gauche from "../components/barre/barre_gauche.vue";
+import Foot_card from "../components/icone_card/foot_card.vue";
+import Horloge from "../components/icone_card/horloge.vue";
+import Loca from "../components/icone_card/loca.vue";
+import Boutton from "../components/boutton.vue";
+
 
 import {
   getStorage, // Obtenir le Cloud Storage
@@ -120,10 +159,14 @@ export default {
   name: "ListeView",
   data() {
     return {
-      nom: null,
+     
       listePartieSynchro: [],
       filter: "",
-      photo: null,
+      image: null,
+      type: null,
+      sport: null,
+      date: null,
+      lieux: null,
     };
   },
   components: {
@@ -131,27 +174,31 @@ export default {
     FooterView,
     Barre_droite,
     Barre_gauche,
+    Foot_card,
+    Horloge,
+    Loca,
+    Boutton,
   },
 
   computed: {
     //Tri des catégories par ordre alpha
-    orderByNom: function () {
+    orderBytype: function () {
       return this.listePartieSynchro.sort(function (a, b) {
-        if (a.nom < b.nom) return -1;
-        if (a.nom > b.nom) return 1;
+        if (a.type < b.type) return -1;
+        if (a.type > b.type) return 1;
         return 0;
       });
     },
 
-    filterByNom: function () {
+    filterBytype: function () {
       if (this.filter.length > 0) {
         let filter = this.filter.toLowerCase();
-        return this.orderByNom.filter(function (partie) {
+        return this.orderBytype.filter(function (partie) {
           //console.log("partie", partie.partie);
-          return partie.nom.toLowerCase().includes(filter);
+          return partie.type.toLowerCase().includes(filter);
         });
       } else {
-        return this.orderByNom;
+        return this.orderBytype;
       }
     },
   },
@@ -174,11 +221,11 @@ export default {
 
         this.listePartieSynchro.forEach(function (partie) {
           const storage = getStorage();
-          const spaceRef = ref(storage, "partie/" + partie.photo);
+          const spaceRef = ref(storage, "partie/" + partie.image);
           //const spaceRef = ref(storage, "partie/buju.png");
           getDownloadURL(spaceRef)
             .then((url) => {
-              partie.photo = url;
+              partie.image = url;
               // console.log("partie", partie);
             })
             .catch((error) => {
@@ -189,10 +236,10 @@ export default {
     },
 
     previewImage: function (event) {
-      // Mise à jour de la photo du partie
+      // Mise à jour de la image du partie
       this.file = this.$refs.file.files[0];
-      // Récupérer le nom du fichier pour la photo du partie
-      this.partie.photo = this.file.name;
+      // Récupérer le type du fichier pour la image du partie
+      this.partie.image = this.file.name;
       // Reference to the DOM input element
       // Reference du fichier à prévisualiser
       var input = event.target;
@@ -216,10 +263,10 @@ export default {
     async createPartie() {
       const firestore = getFirestore();
       const storage = getStorage();
-      const refStorage = ref(storage, "partie/" + this.partie.photo);
+      const refStorage = ref(storage, "partie/" + this.partie.image);
       const dbPartie = collection(firestore, "partie");
       const docRef = await addDoc(dbPartie, {
-        nom: this.nom,
+        type: this.type,
         partie: this.partie,
       });
       console.log("document crée avec le id : ", docRef.id);
@@ -228,7 +275,7 @@ export default {
       const firestore = getFirestore();
       const docRef = doc(firestore, "partie", partie.id);
       await updateDoc(docRef, {
-        nom: partie.nom,
+        type: partie.type,
         partie: partie.partie,
       });
     },
